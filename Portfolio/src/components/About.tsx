@@ -168,7 +168,7 @@ export default function About() {
             <p className="reveal">
               I'm a{" "}
               <em className="not-italic text-red-500 font-semibold">
-                fresher fullstack developer
+                Fullstack developer
               </em>{" "}
               who graduated from{" "}
               <strong className="text-slate-300">GLA University</strong>. I
