@@ -34,7 +34,7 @@ export default function App() {
   }, []);
   return (
     <div
-      className="bg-[#0d0d10] min-h-screen text-[#f0f0f8]"
+      className="bg-gray-950 min-h-screen text-gray-100"
       style={{ fontFamily: "'DM Sans', sans-serif", cursor: "none" }}
     >
       <style>{`
@@ -52,7 +52,7 @@ export default function App() {
           content: '';
           position: fixed; inset: 0;
           background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 3px);
-          pointer-events: none; z-index: 7000; opacity: 0.2;
+          pointer-events: none; z-index-[7000]; opacity: 0.2;
         }
 
         .font-display { font-family: 'Bebas Neue', sans-serif; }
@@ -92,7 +92,7 @@ export default function App() {
       {/* Scroll progress bar */}
       <div
         ref={progressRef}
-        className="fixed top-0 left-0 right-0 h-[3px] z-[9000] origin-left scale-x-0"
+        className="fixed top-0 left-0 right-0 h-0.75 z-9000 origin-left scale-x-0"
         style={{
           background: "linear-gradient(90deg, #e8003d, #1a56ff, #e8003d)",
         }}

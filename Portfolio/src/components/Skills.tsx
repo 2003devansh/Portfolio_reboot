@@ -29,12 +29,13 @@ function SkillTag({ name, level }: SkillItem) {
   return (
     <span
       className={`relative font-mono text-[11px] px-3 py-1.5 border overflow-hidden group/tag cursor-none transition-colors duration-200
-        ${level === "core"
-          ? "border-[rgba(232,0,61,0.4)] text-[#c0c0d0] bg-[rgba(232,0,61,0.07)]"
-          : "border-[#1a1a2e] text-[#445]"
-        }`}
+                ${
+                  level === "core"
+                    ? "border-[rgba(232,0,61,0.4)] text-[#c0c0d0] bg-[rgba(232,0,61,0.07)]"
+                    : "border-[#1a1a2e] text-[#445]"
+                }`}
     >
-      <span className="absolute inset-0 bg-[#e8003d] origin-bottom scale-y-0 group-hover/tag:scale-y-100 transition-transform duration-[220ms] ease-out z-0" />
+      <span className="absolute inset-0 bg-[#e8003d] origin-bottom scale-y-0 group-hover/tag:scale-y-100 transition-transform duration-220 ease-out z-0" />
       <span className="relative z-10 group-hover/tag:text-white transition-colors duration-200">
         {name}
       </span>
@@ -51,8 +52,14 @@ function SkillGroup({ category, icon, items }: SkillGroupProps) {
 
     const onMove = (e: MouseEvent) => {
       const r = el.getBoundingClientRect();
-      el.style.setProperty("--mx", `${((e.clientX - r.left) / r.width) * 100}%`);
-      el.style.setProperty("--my", `${((e.clientY - r.top) / r.height) * 100}%`);
+      el.style.setProperty(
+        "--mx",
+        `${((e.clientX - r.left) / r.width) * 100}%`,
+      );
+      el.style.setProperty(
+        "--my",
+        `${((e.clientY - r.top) / r.height) * 100}%`,
+      );
     };
 
     el.addEventListener("mousemove", onMove);
@@ -68,7 +75,8 @@ function SkillGroup({ category, icon, items }: SkillGroupProps) {
       <div
         className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-400"
         style={{
-          background: "radial-gradient(circle at var(--mx) var(--my), rgba(232,0,61,0.06), transparent 55%)",
+          background:
+            "radial-gradient(circle at var(--mx) var(--my), rgba(232,0,61,0.06), transparent 55%)",
         }}
       />
       <div className="font-mono text-[10px] text-[#e8003d] tracking-[0.3em] uppercase mb-5 flex items-center gap-2">
@@ -110,7 +118,9 @@ function ProfBar({ name, pct }: ProfBarProps) {
   return (
     <div className="mb-5">
       <div className="flex justify-between mb-1.5">
-        <span className="font-mono text-[11px] text-[#445] tracking-wider">{name}</span>
+        <span className="font-mono text-[11px] text-[#445] tracking-wider">
+          {name}
+        </span>
         <span className="font-mono text-[11px] text-[#e8003d]">{pct}%</span>
       </div>
       <div className="h-px bg-[#1a1a2e] relative">
@@ -160,7 +170,7 @@ export default function Skills() {
               stagger: 0.035,
               duration: 0.4,
               ease: "back.out(1.5)",
-            }
+            },
           );
         },
       });
@@ -181,7 +191,7 @@ export default function Skills() {
             start: "top 88%",
             toggleActions: "play none none reverse",
           },
-        }
+        },
       );
     });
 
@@ -194,7 +204,7 @@ export default function Skills() {
         .map((c) =>
           c === " "
             ? " "
-            : `<span class="inline-block overflow-hidden"><span class="inline-block" style="transform:translateY(120%);opacity:0">${c}</span></span>`
+            : `<span class="inline-block overflow-hidden"><span class="inline-block" style="transform:translateY(120%);opacity:0">${c}</span></span>`,
         )
         .join("");
 
@@ -230,7 +240,12 @@ export default function Skills() {
 
       <div className="skills-grid grid grid-cols-1 md:grid-cols-2 border-t border-l border-[#1a1a2e] reveal">
         {SKILLS.map((s) => (
-          <SkillGroup key={s.category} category={s.category} icon={s.icon} items={s.items as SkillItem[]} />
+          <SkillGroup
+            key={s.category}
+            category={s.category}
+            icon={s.icon}
+            items={s.items as SkillItem[]}
+          />
         ))}
       </div>
 

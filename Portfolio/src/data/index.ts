@@ -90,7 +90,6 @@ export const PROJECTS = [
     tags: ["React", "Node.js", "PostgreSQL", "Prisma", "JWT"],
     featured: true,
     desc: "Full-stack charity management platform connecting donors, recipients, and volunteers. Built REST APIs with Node.js and PostgreSQL using Prisma ORM, implemented role-based workflows, and developed a React frontend for managing donations, requests, and volunteer tasks.",
-    link: "#",
     github: "https://github.com/2003devansh/charity_app",
   },
   {
@@ -99,7 +98,6 @@ export const PROJECTS = [
     tags: ["React", "Node.js", "AI Integration", "PrismJS", "API"],
     featured: true,
     desc: "AI-powered code editor that analyzes JavaScript code and provides structured feedback including issues, suggested fixes, and best practices. Built with a React code editor interface and backend AI integration for automated code review.",
-    link: "#",
     github:
       "https://github.com/2003devansh/https---github.com-2003devansh-bugslayer",
   },
@@ -109,8 +107,7 @@ export const PROJECTS = [
     tags: ["JavaScript", "React", "Game Logic", "UI"],
     featured: false,
     desc: "Interactive chess web application where users can play chess in the browser. Implemented full chess rules, move validation, and dynamic board rendering with responsive UI.",
-    link: "#",
-    github: "#",
+    github: "https://github.com/2003devansh/chess",
   },
   {
     id: "04",
@@ -118,7 +115,6 @@ export const PROJECTS = [
     tags: ["React", "Node.js", "MongoDB", "JWT", "Express"],
     featured: false,
     desc: "Full-stack social platform where users can create, update, and delete posts. Implemented JWT authentication, secure password hashing, and RESTful APIs with MongoDB for persistent data storage.",
-    link: "#",
     github:
       "https://github.com/2003devansh/https---github.com-2003devansh-Resume_project",
   },
@@ -128,7 +124,6 @@ export const PROJECTS = [
     tags: ["React", "TypeScript", "Dashboard", "Production"],
     featured: true,
     desc: "Contributed to the development of a Transport Management System during my time as an SDE Trainee at Trieon TechnoSolutions. Worked on production UI features, dashboard improvements, reusable components, and API integrations.",
-    link: "#",
     github: "#",
   },
 ];

@@ -1,4 +1,4 @@
-/* eslint-disable  @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,11 +14,9 @@ interface ProjectProps {
   tags: string[];
   featured?: boolean;
   desc: string;
-  link: string;
   github: string;
 }
 
-// Custom type to handle the manual property we attach to the track
 type DraggableElement = HTMLDivElement & { _tx?: number };
 
 // --- Components ---
@@ -29,7 +27,6 @@ function ProjectCard({
   tags,
   featured,
   desc,
-  link,
   github,
 }: ProjectProps) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -71,46 +68,11 @@ function ProjectCard({
   return (
     <div
       ref={cardRef}
-      className={`shrink-0 border border-[#1a1a2e] bg-[#0d0d14] p-7 flex flex-col justify-between relative overflow-hidden group cursor-none transition-all duration-300 hover:border-[rgba(232,0,61,0.3)]
+      className={`shrink-0 border border-[#1a1a2e] bg-[#0d0d14] p-7 flex flex-col justify-between relative overflow-hidden group transition-all duration-300 hover:border-[rgba(232,0,61,0.3)]
         ${featured ? "w-130 h-120" : "w-95 h-110"}`}
       style={{ transformStyle: "preserve-3d" }}
     >
-      <div className="absolute inset-0 bg-linear-to-br from-[rgba(232,0,61,0.04)] to-[rgba(26,86,255,0.03)] opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-      <div className="absolute top-0 right-0 w-16 h-16 border-l border-b border-[rgba(232,0,61,0.1)]" />
-
-      <svg
-        className="absolute top-2 right-2 opacity-10 group-hover:opacity-30 transition-opacity duration-300"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-      >
-        {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => {
-          const r = (deg * Math.PI) / 180;
-          return (
-            <line
-              key={i}
-              x1={12 + Math.cos(r) * 3}
-              y1={12 + Math.sin(r) * 3}
-              x2={12 + Math.cos(r) * 11}
-              y2={12 + Math.sin(r) * 11}
-              stroke="#e8003d"
-              strokeWidth="0.8"
-            />
-          );
-        })}
-        {[5, 9, 13].map((r) => (
-          <circle
-            key={r}
-            cx={12}
-            cy={12}
-            r={r}
-            stroke="rgba(200,216,255,0.5)"
-            strokeWidth="0.5"
-            fill="none"
-          />
-        ))}
-      </svg>
+      <div className="absolute inset-0 bg-linear-to-br from-[rgba(232,0,61,0.04)] to-[rgba(26,86,255,0.03)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />
 
       <div>
         {featured && (
@@ -136,26 +98,30 @@ function ProjectCard({
         </div>
       </div>
 
-      <div>
+      <div className="relative z-10">
+        {" "}
+        {/* Ensure links are above card decorators */}
         <p className="font-body text-[13px] text-[#445] leading-relaxed mb-6">
           {desc}
         </p>
         <div className="flex gap-4">
-          <a
-            href={link}
-            className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#e8003d] flex items-center gap-1.5 hover:gap-3 transition-all duration-300 no-underline group/link"
-          >
-            Live Demo{" "}
-            <span className="group-hover/link:translate-x-1 transition-transform duration-300">
-              ⟶
+          {github !== "#" ? (
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              /* KEY FIX 1: Stop the click/mousedown from reaching the drag logic */
+              onMouseDown={(e) => e.stopPropagation()}
+              onTouchStart={(e) => e.stopPropagation()}
+              className="font-mono text-[10px] tracking-[0.2em] uppercase flex items-center gap-1.5 text-red-500 hover:text-red-400 no-underline cursor-pointer transition-colors"
+            >
+              GitHub ↗
+            </a>
+          ) : (
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#334] italic">
+              Private Source
             </span>
-          </a>
-          <a
-            href={github}
-            className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#334] hover:text-[#c0c0d0] flex items-center gap-1.5 no-underline transition-colors duration-300"
-          >
-            GitHub ↗
-          </a>
+          )}
         </div>
       </div>
     </div>
@@ -170,7 +136,7 @@ export default function Projects() {
   useEffect(() => {
     if (!sectionRef.current || !trackRef.current) return;
 
-    // Stagger cards on enter
+    // Entrance Animation
     ScrollTrigger.create({
       trigger: sectionRef.current,
       start: "top 78%",
@@ -178,7 +144,7 @@ export default function Projects() {
       onEnter() {
         if (trackRef.current) {
           gsap.fromTo(
-            trackRef.current.querySelectorAll(".flex-shrink-0"),
+            trackRef.current.querySelectorAll(".shrink-0"),
             { opacity: 0, x: 80 },
             {
               opacity: 1,
@@ -192,7 +158,6 @@ export default function Projects() {
       },
     });
 
-    // Draggable with momentum
     const track = trackRef.current;
     const cont = containerRef.current;
     if (!cont) return;
@@ -205,6 +170,9 @@ export default function Projects() {
       anim: number;
 
     const onDown = (e: any) => {
+      /* KEY FIX 2: Only start drag if the user isn't clicking a link */
+      if (e.target.closest("a")) return;
+
       drag = true;
       sx = e.pageX || (e.touches && e.touches[0].pageX);
       lx = sx;
@@ -270,7 +238,7 @@ export default function Projects() {
         <div className="flex items-center gap-3 font-mono text-[10px] text-[#e8003d] tracking-[0.35em] uppercase mb-5">
           <span>🕸</span> 03 — Work
         </div>
-        <h2 className="font-display text-[clamp(2.8rem,6vw,5.5rem)] leading-[0.92] tracking-wider">
+        <h2 className="font-display text-[clamp(2.8rem,6vw,5.5rem)] leading-[0.92] tracking-wider text-white">
           SELECTED
           <br />
           PROJECTS
@@ -280,11 +248,19 @@ export default function Projects() {
       <div ref={containerRef} className="relative h-125">
         <div
           ref={trackRef}
-          className="absolute top-0 left-0 flex gap-5 px-8 md:px-16 will-change-transform select-none"
+          className="absolute top-0 left-0 flex gap-5 px-8 md:px-16 will-change-transform"
           style={{ cursor: "grab" }}
         >
           {PROJECTS.map((p) => (
-            <ProjectCard key={p.id} {...p} />
+            <ProjectCard
+              key={p.id}
+              id={p.id}
+              title={p.title}
+              tags={p.tags}
+              featured={p.featured}
+              desc={p.desc}
+              github={p.github}
+            />
           ))}
         </div>
       </div>

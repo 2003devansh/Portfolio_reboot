@@ -17,10 +17,8 @@ interface MagBtnProps {
 // --- Components ---
 
 const MagBtn = ({ href, primary, children }: MagBtnProps) => {
-  // Specify HTMLDivElement to avoid 'never' or 'null' errors
   const ref = useRef<HTMLDivElement>(null);
 
-  // Assuming useMagneticButton handles the ref internally
   useMagneticButton(ref, 0.3);
 
   return (
@@ -28,11 +26,11 @@ const MagBtn = ({ href, primary, children }: MagBtnProps) => {
       <a
         href={href}
         className={`relative font-mono text-[11px] tracking-[0.2em] uppercase px-8 py-3.5 inline-block overflow-hidden transition-colors duration-300 no-underline group
-          ${
-            primary
-              ? "bg-[#e8003d] text-white hover:text-white"
-              : "border border-[rgba(232,0,61,0.35)] text-[#556] hover:text-white hover:border-[#e8003d]"
-          }`}
+                    ${
+                      primary
+                        ? "bg-red-600 text-white hover:text-white"
+                        : "border border-red-200 text-gray-500 hover:text-white hover:border-red-600"
+                    }`}
         style={
           primary
             ? {
@@ -42,7 +40,7 @@ const MagBtn = ({ href, primary, children }: MagBtnProps) => {
             : {}
         }
       >
-        <span className="absolute inset-0 bg-[#1a56ff] origin-right scale-x-0 group-hover:scale-x-100 group-hover:origin-left transition-transform duration-380 ease-[cubic-bezier(0.77,0,0.175,1)]" />
+        <span className="absolute inset-0 bg-blue-600 origin-right scale-x-0 group-hover:scale-x-100 group-hover:origin-left transition-transform duration-380 ease-[cubic-bezier(0.77,0,0.175,1)]" />
         <span className="relative z-10">{children}</span>
       </a>
     </div>
@@ -50,7 +48,6 @@ const MagBtn = ({ href, primary, children }: MagBtnProps) => {
 };
 
 const Hero = () => {
-  // Added explicit HTMLElement types to all refs
   const nameRef = useRef<HTMLDivElement>(null);
   const eyebrowRef = useRef<HTMLDivElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
@@ -60,7 +57,6 @@ const Hero = () => {
   const glitchRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // Corner text stagger
     document.querySelectorAll(".hero-corner-line").forEach((el, i) => {
       gsap.fromTo(
         el,
@@ -96,7 +92,6 @@ const Hero = () => {
       .to(lineRef.current, { scaleX: 1, duration: 1.4, ease: "expo.out" }, 0.6)
       .to(bgRef.current, { opacity: 1, duration: 1.5 }, 0.5);
 
-    // Glitch loop - FIXED: Added null check and explicit type
     const glitchInterval = setInterval(() => {
       const el = glitchRef.current;
       if (el) {
@@ -107,7 +102,6 @@ const Hero = () => {
       }
     }, 3500);
 
-    // Parallax
     if (bgRef.current) {
       gsap.to(bgRef.current, {
         yPercent: 20,
@@ -136,10 +130,9 @@ const Hero = () => {
 
     return () => {
       clearInterval(glitchInterval);
-      // Clean up ScrollTriggers on unmount
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, []); // Added empty dependency array to run once
+  }, []);
 
   return (
     <section
@@ -151,17 +144,17 @@ const Hero = () => {
         className="absolute inset-0 z-0 opacity-0"
         style={{
           backgroundImage: `
-            repeating-linear-gradient(0deg,rgba(200,216,255,0.025) 0,rgba(200,216,255,0.025) 1px,transparent 1px,transparent 50px),
-            repeating-linear-gradient(60deg,rgba(200,216,255,0.025) 0,rgba(200,216,255,0.025) 1px,transparent 1px,transparent 50px),
-            repeating-linear-gradient(120deg,rgba(200,216,255,0.025) 0,rgba(200,216,255,0.025) 1px,transparent 1px,transparent 50px)
-          `,
+                        repeating-linear-gradient(0deg,rgba(200,216,255,0.025) 0,rgba(200,216,255,0.025) 1px,transparent 1px,transparent 50px),
+                        repeating-linear-gradient(60deg,rgba(200,216,255,0.025) 0,rgba(200,216,255,0.025) 1px,transparent 1px,transparent 50px),
+                        repeating-linear-gradient(120deg,rgba(200,216,255,0.025) 0,rgba(200,216,255,0.025) 1px,transparent 1px,transparent 50px)
+                    `,
         }}
       />
 
       <div className="relative z-20">
         <div
           ref={eyebrowRef}
-          className="font-mono text-[11px] tracking-[0.4em] text-[#e8003d] uppercase mb-5 flex items-center gap-3 opacity-0"
+          className="font-mono text-[11px] tracking-[0.4em] text-red-600 uppercase mb-5 flex items-center gap-3 opacity-0"
         >
           <span>🕷</span>
           YOUR FRIENDLY NEIGHBOURHOOD WEB DEVELOPER
@@ -172,7 +165,7 @@ const Hero = () => {
             <span className="block overflow-hidden">
               <span
                 id="hero-w1"
-                className="block text-[clamp(4.5rem,13vw,11rem)] text-[#f0f0f8]"
+                className="block text-[clamp(4.5rem,13vw,11rem)] text-slate-100"
                 style={{ transform: "translateY(110%)" }}
               >
                 {PERSONAL.firstName}
@@ -183,7 +176,7 @@ const Hero = () => {
                 id="hero-w2"
                 ref={glitchRef}
                 data-text={PERSONAL.lastName}
-                className="block text-[clamp(4.5rem,13vw,11rem)] text-[#e8003d] glitch-el"
+                className="block text-[clamp(4.5rem,13vw,11rem)] text-red-600 glitch-el"
                 style={{ transform: "translateY(110%)" }}
               >
                 {PERSONAL.lastName}
@@ -195,21 +188,21 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mt-10 gap-6">
           <p
             ref={descRef}
-            className="font-mono text-[12px] text-[#445] leading-loose max-w-sm opacity-0"
+            className="font-mono text-[12px] text-gray-400 leading-loose max-w-sm opacity-0"
           >
-            <strong className="text-[#c0c0d0]">
+            <strong className="text-gray-300">
               Fresher fullstack developer
             </strong>{" "}
             with
             <br />
             internship experience at{" "}
-            <em className="not-italic text-[#e8003d] font-semibold">
+            <em className="not-italic text-red-600 font-semibold">
               Trieon Technosolution Pvt Ltd
             </em>
             .<br />
             B.Tech @ GLA University.
             <br />
-            <span className="text-[#334]">
+            <span className="text-gray-500">
               Building the web — one thread at a time. 🕸️
             </span>
           </p>
@@ -235,13 +228,13 @@ const Hero = () => {
         }}
       />
 
-      <div className="absolute bottom-16 right-8 md:right-16 font-display text-[8rem] text-[rgba(232,0,61,0.03)] leading-none pointer-events-none select-none z-0">
+      <div className="absolute bottom-16 right-8 md:right-16 font-display text-[8rem] text-red-600/5 leading-none pointer-events-none select-none z-0">
         01
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20">
-        <div className="w-px h-10 bg-gradient-to-b from-[#e8003d] to-transparent animate-pulse" />
-        <span className="font-mono text-[9px] text-[#334] tracking-[0.3em]">
+        <div className="w-px h-10 bg-linear-to-b from-red-600 to-transparent animate-pulse" />
+        <span className="font-mono text-[9px] text-gray-500 tracking-[0.3em]">
           SCROLL
         </span>
       </div>

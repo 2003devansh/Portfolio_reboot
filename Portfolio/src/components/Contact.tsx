@@ -85,7 +85,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative z-10 bg-[#060608] border-t border-[#1a1a2e] px-8 md:px-16 py-28 text-center overflow-hidden"
+      className="relative z-10 bg-black border-t border-slate-900 px-8 md:px-16 py-28 text-center overflow-hidden"
     >
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
         <span className="font-display text-[22vw] text-[rgba(232,0,61,0.018)] tracking-[-0.05em] whitespace-nowrap">
@@ -93,25 +93,23 @@ export default function Contact() {
         </span>
       </div>
 
-      <div className="reveal flex items-center justify-center gap-3 font-mono text-[10px] text-[#e8003d] tracking-[0.35em] uppercase mb-8">
+      <div className="reveal flex items-center justify-center gap-3 font-mono text-[10px] text-red-600 tracking-[0.35em] uppercase mb-8">
         <span>🕸</span> 04 — Contact
       </div>
 
       <div ref={titleRef} className="mb-8">
         <h2 className="font-display leading-[0.9] tracking-wider text-[clamp(3rem,8vw,7rem)]">
-          <span className="title-red block text-[#e8003d] opacity-0">
-            LET'S
-          </span>
-          <span className="title-blue block text-[#1a56ff] opacity-0">
+          <span className="title-red block text-red-600 opacity-0">LET'S</span>
+          <span className="title-blue block text-blue-600 opacity-0">
             BUILD
           </span>
-          <span className="title-white block text-[#f0f0f8] opacity-0">
+          <span className="title-white block text-white opacity-0">
             TOGETHER
           </span>
         </h2>
       </div>
 
-      <p className="reveal font-mono text-[11px] text-[#445] tracking-[0.2em] leading-loose max-w-md mx-auto mb-10">
+      <p className="reveal font-mono text-[11px] text-gray-500 tracking-[0.2em] leading-loose max-w-md mx-auto mb-10">
         Open to full-time roles, internships &amp; freelance work.
         <br />
         Based in India — available remotely worldwide. 🕷️
@@ -119,7 +117,7 @@ export default function Contact() {
 
       <a
         href={`mailto:${PERSONAL.email}`}
-        className="reveal font-display text-[clamp(1.2rem,3vw,2rem)] text-[#e8003d] tracking-widest pb-1 border-b border-[rgba(232,0,61,0.3)] hover:tracking-[0.25em] hover:text-[#1a56ff] transition-all duration-400 no-underline inline-block"
+        className="reveal font-display text-[clamp(1.2rem,3vw,2rem)] text-red-600 tracking-widest pb-1 border-b border-red-600/30 hover:tracking-[0.25em] hover:text-blue-600 transition-all duration-400 no-underline inline-block"
       >
         {PERSONAL.email}
       </a>
@@ -132,19 +130,18 @@ export default function Contact() {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[10px] text-[#445] hover:text-[#e8003d] tracking-[0.2em] uppercase no-underline transition-colors duration-300"
+              className="font-mono text-[10px] text-gray-500 hover:text-red-600 tracking-[0.2em] uppercase no-underline transition-colors duration-300"
             >
               {s.label}
             </a>
           ))
           .reduce(
-            // Corrected TSX -> JSX and explicitly typed the accumulator
             (acc: JSX.Element[], el, i) =>
               i === 0
                 ? [el]
                 : [
                     ...acc,
-                    <div key={`sep-${i}`} className="w-px h-3 bg-[#1a1a2e]" />,
+                    <div key={`sep-${i}`} className="w-px h-3 bg-slate-900" />,
                     el,
                   ],
             [],
@@ -160,8 +157,8 @@ export default function Contact() {
           fill="none"
           className="opacity-20"
         >
-          <circle cx="50" cy="50" r="20" fill="#e8003d" />
-          <ellipse cx="50" cy="50" rx="10" ry="18" fill="#003bbf" />
+          <circle cx="50" cy="50" r="20" fill="red" />
+          <ellipse cx="50" cy="50" rx="10" ry="18" fill="blue" />
           <ellipse
             cx="43"
             cy="44"
@@ -194,12 +191,12 @@ export default function Contact() {
               y1={y1}
               x2={x2}
               y2={y2}
-              stroke="rgba(200,216,255,0.5)"
+              stroke="lightblue"
               strokeWidth="1.5"
             />
           ))}
         </svg>
-        <p className="font-mono text-[9px] text-[#223] tracking-[0.3em]">
+        <p className="font-mono text-[9px] text-gray-700 tracking-[0.3em]">
           "NOT EVERYONE CAN DO WHAT YOU DO. BUT YOU CAN." 🕷️
         </p>
       </div>
