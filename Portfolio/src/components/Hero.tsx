@@ -192,7 +192,7 @@ const Hero = () => {
           >
             <strong className="text-gray-300">Fullstack developer</strong> with
             <br />
-            internship experience at{" "}
+            SDE Trainee experience at{" "}
             <em className="not-italic text-red-600 font-semibold">
               Trieon Technosolution Pvt Ltd
             </em>
