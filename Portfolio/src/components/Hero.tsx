@@ -190,11 +190,10 @@ const Hero = () => {
             ref={descRef}
             className="font-mono text-[12px] text-gray-400 leading-loose max-w-sm opacity-0"
           >
-            <strong className="text-gray-300">Fullstack developer</strong> with
+            <strong className="text-gray-300">Fullstack developer</strong> at
             <br />
-            SDE Trainee experience at{" "}
             <em className="not-italic text-red-600 font-semibold">
-              Trieon Technosolution Pvt Ltd
+              Tech couples Pvt Ltd
             </em>
             .<br />
             B.Tech @ GLA University.

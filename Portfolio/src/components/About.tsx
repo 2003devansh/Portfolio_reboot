@@ -204,6 +204,24 @@ export default function About() {
 
             <div className="xp-line absolute left-0 top-0 w-0.5 h-0 bg-linear-to-b from-red-500 to-blue-600" />
 
+            <div className="pt-4">
+              <div className="font-display text-xl tracking-widest text-slate-100">
+                TECH COUPLES PVT LTD
+              </div>
+
+              <div className="font-mono text-[10px] text-red-500 tracking-[0.2em] uppercase mt-1">
+                FULLSTACK DEVELOPER
+              </div>
+
+              <div className="font-mono text-[10px] text-slate-500 tracking-wider mt-2">
+                APR 2026 - CURRENTLY | Production Projects
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="my-6 h-px w-full bg-linear-to-r from-transparent via-slate-700 to-transparent" />
+
+            {/* Experience 2 */}
             <div>
               <div className="font-display text-xl tracking-widest text-slate-100">
                 TRIEON TECHNOSOLUTION PVT LTD
@@ -218,7 +236,6 @@ export default function About() {
               </div>
             </div>
           </div>
-
           <div className="reveal mt-4 border border-slate-800 p-7 relative">
             <span className="absolute top-1 left-4 font-mono text-[9px] tracking-[0.25em] text-blue-600 bg-neutral-950 px-2 uppercase">
               Education
@@ -257,7 +274,7 @@ export default function About() {
               <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_#22c55e] animate-pulse" />
 
               <span className="font-display text-xl tracking-widest text-green-400">
-                AVAILABLE FOR HIRE
+                Working
               </span>
             </div>
 
