@@ -168,29 +168,43 @@ export default function About() {
             <p className="reveal">
               I'm a{" "}
               <em className="not-italic text-red-500 font-semibold">
-                Fullstack developer
+                Fullstack Developer
               </em>{" "}
-              who graduated from{" "}
-              <strong className="text-slate-300">GLA University</strong>. I
-              enjoy building practical web applications and constantly improving
-              my skills across both frontend and backend development.
+              focused on building reliable, scalable web applications across the
+              frontend and backend. I enjoy turning complex business
+              requirements into clean application architecture, well-structured
+              APIs, and intuitive user experiences.
             </p>
 
             <p className="reveal">
-              During my internship at{" "}
+              At{" "}
+              <em className="not-italic text-red-500 font-semibold">
+                TechCouples Pvt Ltd
+              </em>
+              , I've worked across production systems involving{" "}
+              <strong className="text-slate-300">
+                backend architecture, REST APIs, business logic, and frontend
+                integration
+              </strong>
+              . My work includes developing payroll infrastructure for an HRMS
+              platform, building backend systems for an online gaming platform,
+              and contributing to financial technology applications.
+            </p>
+
+            <p className="reveal">
+              Before that, at{" "}
               <em className="not-italic text-red-500 font-semibold">
                 Trieon Technosolution Pvt Ltd
               </em>
-              , I worked on production-level MERN stack projects where I
-              contributed to building reusable UI components, integrating REST
-              APIs, and improving dashboard workflows.
-            </p>
-
-            <p className="reveal">
-              I have also built several full-stack projects including a charity
-              management platform, an AI-powered code editor, and other web
-              applications that helped me strengthen my understanding of modern
-              web technologies and scalable application design.
+              , I worked on production applications using{" "}
+              <strong className="text-slate-300">
+                React, TypeScript, REST APIs, reusable components, and
+                data-driven dashboards
+              </strong>
+              . Alongside professional work, I've built and shipped full-stack
+              applications across different domains, continuously expanding my
+              understanding of system design, backend engineering, and modern
+              web development.
             </p>
           </div>
 
@@ -214,7 +228,7 @@ export default function About() {
               </div>
 
               <div className="font-mono text-[10px] text-slate-500 tracking-wider mt-2">
-                APR 2026 - CURRENTLY | Production Projects
+                APR 2026 - CURRENTLY | Production Systems
               </div>
             </div>
 
@@ -228,14 +242,15 @@ export default function About() {
               </div>
 
               <div className="font-mono text-[10px] text-red-500 tracking-[0.2em] uppercase mt-1">
-                SDE Trainee
+                SDE TRAINEE
               </div>
 
               <div className="font-mono text-[10px] text-slate-500 tracking-wider mt-2">
-                Jun 2025 - Sept 2025 | Production Projects
+                JUN 2025 - SEPT 2025 | Production Systems
               </div>
             </div>
           </div>
+
           <div className="reveal mt-4 border border-slate-800 p-7 relative">
             <span className="absolute top-1 left-4 font-mono text-[9px] tracking-[0.25em] text-blue-600 bg-neutral-950 px-2 uppercase">
               Education

@@ -13,7 +13,7 @@ export const PERSONAL = {
     github: "https://github.com/2003devansh",
     linkedin: "https://www.linkedin.com/in/devansh-singh-150873261/",
     resume:
-      "https://drive.google.com/file/d/1IqgMJ-rR7Na2nKd47oD9RlOO8CsjmOHo/view?usp=drive_link",
+      "https://drive.google.com/file/d/1wvHYE4uoAfETsaqqdcKgENhfuV8kfQpL/view?usp=sharing",
   },
 };
 
